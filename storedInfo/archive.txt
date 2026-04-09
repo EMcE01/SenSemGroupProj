@@ -1,0 +1,36 @@
+File: map.js
+Line: 61
+                onEachFeature: function (feature, layer) {
+                    const name = feature.properties.name;
+                    const status = feature.properties.status;
+                    cosnt eta = getEstimatedCompletion(status, name);
+
+                    layer.bindPopup(
+                        name + " - " + status + (beds ? `<br>beds: ${beds}` : "")
+                    );
+
+                    if (beds) {
+                        layer.on('mouseover', function () {
+                            layer.openPopup();
+                        });
+                        layer.on('mouseout', function () {
+                            layer.closePopup();
+                        });
+                    }
+
+                    layer.on('click', function () {
+                        window.location.href = `report.html?sidewalk=${name}`;
+                    });
+                }
+
+file:
+line: 
+
+
+
+
+
+notes: MAP ->
+HTML: 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
